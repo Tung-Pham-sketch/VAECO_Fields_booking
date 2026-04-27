@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Phê duyệt đăng ký</h2>
+
+<table>
+<tr>
+<th>Tên</th>
+<th>Sân</th>
+<th>Thời gian</th>
+<th>Hành động</th>
+</tr>
+
+{% for b in data %}
+<tr>
+<td>{{b.name}}</td>
+<td>{{b.field}}</td>
+<td>{{b.start_time}} - {{b.end_time}}</td>
+<td>
+<a href="/approve/{{b.id}}">Chấp thuận</a>
+<a href="/reject/{{b.id}}">Từ chối</a>
+</td>
+</tr>
+{% endfor %}
+
+</table>
+
+{% endblock %}
