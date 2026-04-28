@@ -4,7 +4,7 @@ from models import get_booking_by_id
 
 EMAIL_SENDER  = "vaecohcmsport@gmail.com"
 EMAIL_PASSWORD = "zzwuehzvrolfdemg"
-EMAIL_MANAGER = "tungpham23801@gmail.com"
+EMAIL_MANAGER = "Vtdung251218@gmail.com"
 
 # Set this to your deployed URL once live, e.g. "https://vaeco-sport.onrender.com"
 # During local testing keep it as localhost.
