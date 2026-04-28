@@ -1,0 +1,70 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #f4f6f9;
+}
+
+.navbar {
+    background: #0a3d62;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+.hero {
+    background: linear-gradient(to right, #0a3d62, #3c6382);
+    color: white;
+    padding: 50px;
+    text-align: center;
+}
+
+.container {
+    padding: 30px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    width: 350px;
+    margin: auto;
+    border-radius: 10px;
+}
+
+input, select {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+button {
+    background: #0a3d62;
+    color: white;
+    padding: 10px;
+    border: none;
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    background: white;
+    border-collapse: collapse;
+}
+
+td, th {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #0a3d62;
+    color: white;
+}
