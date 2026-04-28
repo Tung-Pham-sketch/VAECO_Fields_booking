@@ -14,8 +14,13 @@ def get_db():
 
 
 def init_db():
+    """
+    Create the bookings table if it doesn't exist, then run any
+    missing-column migrations so existing databases stay compatible.
+    """
     conn = get_db()
     try:
+        # Create table (no-op if already exists)
         conn.execute("""
         CREATE TABLE IF NOT EXISTS bookings (
             id          INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -31,6 +36,16 @@ def init_db():
         )
         """)
         conn.commit()
+
+        # Migration: add token column if it was created before this column existed
+        existing_columns = [
+            row[1] for row in conn.execute("PRAGMA table_info(bookings)").fetchall()
+        ]
+        if "token" not in existing_columns:
+            print("[DB] Migrating: adding token column to bookings table.")
+            conn.execute("ALTER TABLE bookings ADD COLUMN token TEXT")
+            conn.commit()
+
     finally:
         conn.close()
 
