@@ -2,13 +2,13 @@ import smtplib
 from email.mime.text import MIMEText
 from models import get_booking_by_id
 
-EMAIL_SENDER  = "tungpham23801@gmail.com"
-EMAIL_PASSWORD = "maecptmpujufftna"
-EMAIL_MANAGER = "engine.ge.v.pw.rr@gmail.com"
+EMAIL_SENDER  = "vaecohcmsport@gmail.com"
+EMAIL_PASSWORD = "zzwuehzvrolfdemg"
+EMAIL_MANAGER = "tungpham23801@gmail.com"
 
 # Set this to your deployed URL once live, e.g. "https://vaeco-sport.onrender.com"
 # During local testing keep it as localhost.
-BASE_URL = "https://vaeco-sport.onrender.com"
+BASE_URL = "https://vaeco-fields-booking.onrender.com"
 
 
 def send_booking_email(booking_id, name, department, field, date, start, end):
