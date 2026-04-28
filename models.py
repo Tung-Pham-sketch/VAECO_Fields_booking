@@ -144,3 +144,17 @@ def update_booking_status(booking_id, status):
         conn.commit()
     finally:
         conn.close()
+
+
+def delete_old_bookings(days=7):
+    """Delete all bookings whose date is more than `days` days in the past."""
+    conn = get_db()
+    try:
+        conn.execute(
+            "DELETE FROM bookings WHERE date(date) < date('now', ?)",
+            (f"-{days} days",)
+        )
+        conn.commit()
+        print(f"[Cleanup] Đã xoá các booking cũ hơn {days} ngày.")
+    finally:
+        conn.close()
