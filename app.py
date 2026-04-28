@@ -1,8 +1,9 @@
 from flask import Flask, render_template, request, redirect
+import threading, time
 from models import (
     init_db, check_conflict, find_available_field,
     create_booking, get_all_bookings, get_booking_by_token,
-    update_booking_status
+    update_booking_status, delete_old_bookings
 )
 from email_service import send_booking_email
 
@@ -16,6 +17,24 @@ FIELDS = [
 ]
 
 init_db()
+
+
+# =========================
+# BACKGROUND CLEANUP
+# =========================
+
+def _cleanup_loop():
+    """Run delete_old_bookings once per day in a background thread."""
+    while True:
+        try:
+            delete_old_bookings(days=7)
+        except Exception as e:
+            print(f"[Cleanup] Lỗi: {e}")
+        time.sleep(24 * 60 * 60)  # wait 24 hours
+
+_cleanup_thread = threading.Thread(target=_cleanup_loop, daemon=True)
+_cleanup_thread.start()
+
 
 
 # =========================
